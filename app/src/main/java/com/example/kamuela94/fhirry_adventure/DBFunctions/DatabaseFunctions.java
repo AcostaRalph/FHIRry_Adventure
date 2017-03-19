@@ -3,6 +3,7 @@ package com.example.kamuela94.fhirry_adventure.DBFunctions;
 import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.field.types.DateTimeType;
 
 import java.sql.SQLException;
 import java.sql.Time;
@@ -15,7 +16,7 @@ import java.util.GregorianCalendar;
 public class DatabaseFunctions{
     private static DatabaseCreate db;
 
-    public static void insert(Context context, String name, GregorianCalendar startTime, GregorianCalendar interval){
+    public static void insert(Context context, String name, DateTimeType startTime, DateTimeType interval){
         if(db == null){
             db = new DatabaseCreate(context);
         }
@@ -27,7 +28,7 @@ public class DatabaseFunctions{
         }
     }
 
-    public static void remove(Context context, String name, GregorianCalendar startTime, GregorianCalendar interval){
+    public static void remove(Context context, String name, DateTimeType startTime, DateTimeType interval){
         if(db == null){
             db = new DatabaseCreate(context);
         }
@@ -47,7 +48,6 @@ public class DatabaseFunctions{
         }
         return null;
     }
-
 
 
 }

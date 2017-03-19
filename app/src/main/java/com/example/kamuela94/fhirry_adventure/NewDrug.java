@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.kamuela94.fhirry_adventure.DBFunctions.DatabaseFunctions;
+import com.j256.ormlite.field.types.DateTimeType;
 
 import java.util.GregorianCalendar;
 
@@ -28,10 +29,13 @@ public class NewDrug extends AppCompatActivity{
     }
 
     public void send(View v){
+ /*       DateTimeType x;
         String name = ((EditText)findViewById(R.id.drugEditText)).getText().toString();
         GregorianCalendar interval = new GregorianCalendar();
         interval.set(interval.HOUR_OF_DAY, interval.HOUR_OF_DAY + parseInt(((EditText)findViewById(R.id.intervalEditText)).getText().toString()));
 
-        DatabaseFunctions.insert(this, name, new GregorianCalendar(), interval);
+        DatabaseFunctions.insert(this, name, x, interval);*/
+
+
     }
 }

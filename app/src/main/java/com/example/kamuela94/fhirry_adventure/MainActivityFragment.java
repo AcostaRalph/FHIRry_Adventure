@@ -64,14 +64,14 @@ public class MainActivityFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 // UNCOMMENT TO HAVE ADD CLICK FUNCTIONALITY
-//        switch(item.getItemId()){
-//            case action_add_new_drug:
-//                Log.d("Log","ID 1 PRESSED");
-//                Intent intent = NewDrug.newIntent(getActivity(), NewDrug.class);
-//                startActivity(intent);
-//            default:
+        switch(item.getItemId()){
+            case action_add_new_drug:
+                Log.d("Log","ID 1 PRESSED");
+                Intent intent = new Intent(getActivity(), NewDrug.class);
+                startActivity(intent);
+            default:
                 return super.onOptionsItemSelected(item);
-//        }
+        }
     }
 
     private void updateUI() {

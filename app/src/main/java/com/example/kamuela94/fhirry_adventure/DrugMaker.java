@@ -29,6 +29,7 @@ public class DrugMaker extends AppCompatActivity {
     List<String[]> names;
     List<GregorianCalendar[]> intervals;
     List<Drugs> drugRows;
+    Drug drug;
     private static DrugMaker sDrugMaker;
     private static ArrayList<Drug> mTotalList;
     private static ArrayList<Drug> mOverdueDrugs;
@@ -43,11 +44,11 @@ public class DrugMaker extends AppCompatActivity {
     }
 
     private DrugMaker(Context context) {
-        try {
+  /*      try {
             mdata = new DatabaseCreate(this).getDrugsDao();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         mTotalList = new ArrayList<>();
         mOverdueDrugs = new ArrayList<>();
         mTakeNowDrugs = new ArrayList<>();
@@ -55,44 +56,80 @@ public class DrugMaker extends AppCompatActivity {
 
         Drug overdueHeadr = new Drug();
         overdueHeadr.setDrugName("Overdue");
-        overdueHeadr.setTimeStarted(new GregorianCalendar());
+        overdueHeadr.setTimeStarted("");
         mOverdueDrugs.add(overdueHeadr);
 
         Drug takeNowHeader = new Drug();
         takeNowHeader.setDrugName("Take Now");
-        takeNowHeader.setTimeStarted(new GregorianCalendar());
+        takeNowHeader.setTimeStarted("");
         mTakeNowDrugs.add(takeNowHeader);
 
         Drug upcomingHeader = new Drug();
         upcomingHeader.setDrugName("Upcoming");
-        upcomingHeader.setTimeStarted(new GregorianCalendar());
+        upcomingHeader.setTimeStarted("");
         mUpcomingDrugs.add(upcomingHeader);
 
-        try {
+/*        try {
             drugRows = mdata.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         //Overdue Drugs Create
-        for(Drugs drugObj : drugRows) {
-            Drug temp = new Drug();
-            GregorianCalendar time = new GregorianCalendar();
-            temp.setDrugName(drugObj.name);
-            temp.setTimeRepeatInterval(drugObj.interval);
-            temp.setTimeStarted(drugObj.startTime);
-            if(time.after(drugObj.interval)){
-                mOverdueDrugs.add(temp);
-            }else if(time.before(drugObj) && (time.HOUR_OF_DAY - drugObj.interval.HOUR_OF_DAY == 0) && (time.MINUTE - drugObj.interval.MINUTE < 10)){
-                mTakeNowDrugs.add(temp);
-            }else{
-                mUpcomingDrugs.add(temp);
-            }
-        }
+        drug = new Drug();
+
+        drug.setUUID();
+        drug.setDrugName("1." + " Xanax");
+        drug.setTimeStarted("10 minutes over");
+        mOverdueDrugs.add(drug);
+
+        drug = new Drug();
+
+        drug.setUUID();
+        drug.setDrugName("2." + " Vicodin");
+        drug.setTimeStarted("30 minutes over");
+        mOverdueDrugs.add(drug);
+
+        drug = new Drug();
+
+        drug.setUUID();
+        drug.setDrugName("3." + " Oxycodone");
+        drug.setTimeStarted("1 hour over");
+        mOverdueDrugs.add(drug);
+
 
         //TakeNow Drugs Create
+            drug = new Drug();
+
+            drug.setUUID();
+            drug.setDrugName("1." + " Insulin");
+            drug.setTimeStarted("TAKE NOW");
+            mTakeNowDrugs.add(drug);
+
+            drug = new Drug();
+
+            drug.setUUID();
+            drug.setDrugName("2." + " Ibuprofen");
+            drug.setTimeStarted("TAKE NOW");
+            mTakeNowDrugs.add(drug);
+
 
         //Upcoming Create
+            Drug drug = new Drug();
+
+            drug.setUUID();
+            drug.setDrugName("1." + " Acetaminophen");
+            drug.setTimeStarted("15 minutes");
+
+            mUpcomingDrugs.add(drug);
+
+            drug = new Drug();
+
+            drug.setUUID();
+            drug.setDrugName("2." + " Warfarin");
+            drug.setTimeStarted("45 minutes");
+
+            mUpcomingDrugs.add(drug);
 
         //Copy Overdue List into Total List
         for (int i = 0; i < mOverdueDrugs.size(); i++) {
@@ -100,12 +137,12 @@ public class DrugMaker extends AppCompatActivity {
         }
 
         //Copy TakeNow List into Total List
-        for (int i = 0; i < mOverdueDrugs.size(); i++) {
+        for (int i = 0; i < mTakeNowDrugs.size(); i++) {
             mTotalList.add(mTakeNowDrugs.get(i));
         }
 
         //Copy Upcoming List into Total List
-        for (int i = 0; i < mOverdueDrugs.size(); i++) {
+        for (int i = 0; i < mUpcomingDrugs.size(); i++) {
             mTotalList.add(mUpcomingDrugs.get(i));
         }
     }

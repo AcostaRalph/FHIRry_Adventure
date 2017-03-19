@@ -1,5 +1,7 @@
 package com.example.kamuela94.fhirry_adventure;
 
+import com.j256.ormlite.field.types.DateTimeType;
+
 import java.util.GregorianCalendar;
 import java.util.UUID;
 
@@ -11,8 +13,8 @@ public class Drug {
 
     private UUID mUUID;
     private String mDrugName;
-    private GregorianCalendar mTimeStarted;
-    private GregorianCalendar mTimeRepeatInterval;
+    private String mTimeStarted;
+    private String mTimeRepeatInterval;
 
 
     public UUID getUUID() {
@@ -23,20 +25,20 @@ public class Drug {
         mUUID = UUID.randomUUID();
     }
 
-    public GregorianCalendar getTimeRepeatInterval() {
+    public String getTimeRepeatInterval() {
         return mTimeRepeatInterval;
     }
 
-    public void setTimeRepeatInterval(GregorianCalendar timeRepeatInterval) {
+    public void setTimeRepeatInterval(String timeRepeatInterval) {
         mTimeRepeatInterval = timeRepeatInterval;
     }
 
-    public GregorianCalendar getTimeStarted() {
+    public String getTimeStarted() {
 
         return mTimeStarted;
     }
 
-    public void setTimeStarted(GregorianCalendar timeStarted) {
+    public void setTimeStarted(String timeStarted) {
         mTimeStarted = timeStarted;
     }
 

@@ -1,6 +1,7 @@
 package com.example.kamuela94.fhirry_adventure.DBFunctions;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.types.DateTimeType;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -27,10 +28,10 @@ public class Drugs implements Serializable {
 
     // Define a String type field to hold student's address
     @DatabaseField(columnName = "start_time")
-    public GregorianCalendar startTime;
+    public DateTimeType startTime;
 
     @DatabaseField(columnName = "interval")
-    public GregorianCalendar interval;
+    public DateTimeType interval;
 
     // Default constructor is needed for the SQLite, so make sure you also have it
     public Drugs(){
@@ -38,7 +39,7 @@ public class Drugs implements Serializable {
     }
 
     //For our own purpose, so it's easier to create a TeacherDetails object
-    public Drugs(final String name, final GregorianCalendar startTime, final GregorianCalendar interval){
+    public Drugs(final String name, final DateTimeType startTime, final DateTimeType interval){
         this.name = name;
         this.startTime = startTime;
         this.interval = interval;
