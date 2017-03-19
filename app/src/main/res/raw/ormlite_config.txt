@@ -1,0 +1,24 @@
+# --table-start--
+dataClass=com.example.kamuela94.fhirry_adventure.DBFunctions.Drugs
+tableName=drugs
+# --table-fields-start--
+# --field-start--
+fieldName=drugId
+columnName=drug_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=name
+# --field-end--
+# --field-start--
+fieldName=startTime
+columnName=start_time
+# --field-end--
+# --field-start--
+fieldName=interval
+columnName=interval
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

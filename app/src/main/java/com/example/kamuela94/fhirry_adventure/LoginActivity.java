@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.kamuela94.fhirry_adventure.DBFunctions.DatabaseCreate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +83,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
         });
+
+        DatabaseCreate db = new DatabaseCreate(this);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
