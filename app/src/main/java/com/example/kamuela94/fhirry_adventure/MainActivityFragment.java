@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.UUID;
+
+import static com.example.kamuela94.fhirry_adventure.R.id.action_add_new_drug;
 
 
 /**
@@ -31,7 +35,7 @@ public class MainActivityFragment extends Fragment {
 
     private RecyclerView mMainRecyclerView;
     private DrugAdapter mAdapter;
-
+    private ArrayList<Drug> mDrugs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +63,15 @@ public class MainActivityFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+// UNCOMMENT TO HAVE ADD CLICK FUNCTIONALITY
+//        switch(item.getItemId()){
+//            case action_add_new_drug:
+//                Log.d("Log","ID 1 PRESSED");
+//                Intent intent = NewDrug.newIntent(getActivity(), NewDrug.class);
+//                startActivity(intent);
+//            default:
+                return super.onOptionsItemSelected(item);
+//        }
     }
 
     private void updateUI() {
@@ -83,12 +95,13 @@ public class MainActivityFragment extends Fragment {
     private class DrugAdapter extends RecyclerView.Adapter<DrugHolder>{
 
         Context mContext;
-        private ArrayList<Drug> mDrugs;
+//        private ArrayList<Drug> mDrugs;
         private View.OnClickListener mListener;
+        private View.OnLongClickListener mLongClickListener;
 
         public DrugAdapter(Context context, ArrayList<Drug> drugs) {
             this.mContext = context;
-            this.mDrugs = drugs;
+            mDrugs = drugs;
         }
 
         @Override
@@ -102,6 +115,7 @@ public class MainActivityFragment extends Fragment {
         public void onBindViewHolder(DrugHolder holder, int position) {
             Drug card = mDrugs.get(position);
             holder.bindDrug(card);
+
         }
 
         @Override
@@ -110,19 +124,26 @@ public class MainActivityFragment extends Fragment {
         }
 
         public void updateDataset(ArrayList<Drug> storyList) {
-            this.mDrugs.clear();
-            this.mDrugs.addAll(storyList);
+            mDrugs.clear();
+            mDrugs.addAll(storyList);
             notifyDataSetChanged();
         }
 
         public void setListener(View.OnClickListener listener) {
             this.mListener = listener;
+
+        }
+
+        public void setLongClickListener(View.OnLongClickListener listener){
+            this.mLongClickListener = listener;
+
+
         }
 
     }
 
     private class DrugHolder extends RecyclerView.ViewHolder
-            /*implements View.OnClickListener*/ {
+            /*implements View.OnLongClickListener*//*, View.OnLongClickListener*/{
 
         private TextView mTitleTextView;
         private TextView mTimeText;
@@ -131,7 +152,16 @@ public class MainActivityFragment extends Fragment {
 
         public DrugHolder(View itemView) {
             super(itemView);
-            //itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+                    mDrugs.remove(position);
+                    updateUI();
+                    return true;
+                }
+            });
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.card_drug_title);
 
@@ -151,6 +181,13 @@ public class MainActivityFragment extends Fragment {
 //        public void onClick(View v) {
 //            Intent intent = StoryActivity.newIntent(getActivity(), mStory.getID());
 //            startActivity(intent);
+//        }
+
+
+//        @Override
+//        public boolean onLongClick(View view) {
+//            UUID id = mDrug.getUUID();
+//            return false;
 //        }
 
         void setTitle(String title) {
