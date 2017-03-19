@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FHIRry_Adventure</string>
+    <string name="app_name">Drug Minder</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -13,4 +13,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="passcode_prompt">Enter Passcode</string>
+    <string name="title_activity_main">Drug Minder</string>
+
 </resources>
