@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#E0595B</color>
+    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorAccent">#222222</color>
+
+    <color name="colorOverdue">#E0595B</color>
+    <color name="colorOnTime">#71D839</color>
+    <color name="colorUpcoming">#F6AC1C</color>
 </resources>
