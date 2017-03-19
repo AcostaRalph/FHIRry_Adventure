@@ -39,7 +39,6 @@ public class DatabaseCreate extends OrmLiteSqliteOpenHelper {
         try {
 
             // Create tables. This onCreate() method will be invoked only once of the application life time i.e. the first time when the application starts.
-            Log.d("Test create", "Creating");
             TableUtils.createTable(connectionSource, Drugs.class);
 
         } catch (SQLException e) {
