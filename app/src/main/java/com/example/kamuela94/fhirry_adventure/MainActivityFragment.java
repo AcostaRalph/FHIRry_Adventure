@@ -143,7 +143,7 @@ public class MainActivityFragment extends Fragment {
             mDrug = drug;
 
             mTitleTextView.setText(mDrug.getDrugName());
-            mTimeText.setText(Integer.toString(mDrug.getTimeStarted()));
+            mTimeText.setText(mDrug.getTimeStarted().toString());
 
         }
 

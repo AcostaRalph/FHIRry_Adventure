@@ -1,5 +1,6 @@
 package com.example.kamuela94.fhirry_adventure;
 
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 /**
@@ -10,8 +11,8 @@ public class Drug {
 
     private UUID mUUID;
     private String mDrugName;
-    private int mTimeStarted;
-    private int mTimeRepeatInterval;
+    private GregorianCalendar mTimeStarted;
+    private GregorianCalendar mTimeRepeatInterval;
 
 
     public UUID getUUID() {
@@ -22,20 +23,20 @@ public class Drug {
         mUUID = UUID.randomUUID();
     }
 
-    public int getTimeRepeatInterval() {
+    public GregorianCalendar getTimeRepeatInterval() {
         return mTimeRepeatInterval;
     }
 
-    public void setTimeRepeatInterval(int timeRepeatInterval) {
+    public void setTimeRepeatInterval(GregorianCalendar timeRepeatInterval) {
         mTimeRepeatInterval = timeRepeatInterval;
     }
 
-    public int getTimeStarted() {
+    public GregorianCalendar getTimeStarted() {
 
         return mTimeStarted;
     }
 
-    public void setTimeStarted(int timeStarted) {
+    public void setTimeStarted(GregorianCalendar timeStarted) {
         mTimeStarted = timeStarted;
     }
 

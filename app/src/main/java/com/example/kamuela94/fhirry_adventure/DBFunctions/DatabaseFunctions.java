@@ -2,16 +2,20 @@ package com.example.kamuela94.fhirry_adventure.DBFunctions;
 
 import android.content.Context;
 
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
 import java.sql.Time;
+import java.util.GregorianCalendar;
 
 /**
  * Created by kamuela94 on 3/18/17.
  */
 
 public class DatabaseFunctions{
-    private DatabaseCreate db;
+    private static DatabaseCreate db;
 
-    public void insert(Context context, String name, Time startTime, Time interval){
+    public static void insert(Context context, String name, GregorianCalendar startTime, GregorianCalendar interval){
         if(db == null){
             db = new DatabaseCreate(context);
         }
@@ -23,7 +27,7 @@ public class DatabaseFunctions{
         }
     }
 
-    public void remove(Context context, String name, Time startTime, Time interval){
+    public static void remove(Context context, String name, GregorianCalendar startTime, GregorianCalendar interval){
         if(db == null){
             db = new DatabaseCreate(context);
         }
@@ -34,6 +38,16 @@ public class DatabaseFunctions{
             e.printStackTrace();
         }
     }
+
+    public static Dao<Drugs, Integer> getDrugs(){
+        try {
+            return db.getDrugsDao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 }

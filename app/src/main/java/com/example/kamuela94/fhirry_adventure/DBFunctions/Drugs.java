@@ -4,6 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.GregorianCalendar;
 
 /**
  * Created by kamuela94 on 3/18/17.
@@ -26,10 +27,10 @@ public class Drugs implements Serializable {
 
     // Define a String type field to hold student's address
     @DatabaseField(columnName = "start_time")
-    public Time startTime;
+    public GregorianCalendar startTime;
 
     @DatabaseField(columnName = "interval")
-    public Time interval;
+    public GregorianCalendar interval;
 
     // Default constructor is needed for the SQLite, so make sure you also have it
     public Drugs(){
@@ -37,7 +38,7 @@ public class Drugs implements Serializable {
     }
 
     //For our own purpose, so it's easier to create a TeacherDetails object
-    public Drugs(final String name, final Time startTime, final Time interval){
+    public Drugs(final String name, final GregorianCalendar startTime, final GregorianCalendar interval){
         this.name = name;
         this.startTime = startTime;
         this.interval = interval;
